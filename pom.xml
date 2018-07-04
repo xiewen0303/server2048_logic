@@ -262,7 +262,6 @@
       <version>3.17</version>
     </dependency>
 
-
     <!-- https://mvnrepository.com/artifact/com.google.protobuf/protobuf-java -->
     <dependency>
       <groupId>com.google.protobuf</groupId>

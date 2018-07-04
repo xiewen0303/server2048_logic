@@ -88,8 +88,8 @@
         -->
 		<logger name="org.apache.commons" level="info"/>
 		<logger name="com.mchange.v2" level="error"/>
-		<logger name="com.ibatis" level="info" additivity="true"/>
-		<logger name="java.sql" level="info" additivity="true" />
+		<logger name="com.ibatis" level="warn" additivity="true"/>
+		<logger name="java.sql" level="DEBUG" additivity="true" />
 		<logger name="org.quartz" level="warn"/>
 		<logger name="com.opensymphony" level="warn"/>
 		<logger name="com.sun.xml.internal.ws" level="warn"/>
@@ -128,7 +128,12 @@
 			<AppenderRef ref="dev_appender" />
 		</logger>
 
+		<!--
 		<root level="info">
+			<AppenderRef ref="Console" />
+		</root>
+		-->
+		<root level="debug">
 			<AppenderRef ref="Console" />
 		</root>
 	</loggers>

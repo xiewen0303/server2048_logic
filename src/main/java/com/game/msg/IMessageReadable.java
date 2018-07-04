@@ -1,7 +1,6 @@
 package com.game.msg;
 
 import com.game.core.IPlayer;
-import com.google.protobuf.GeneratedMessage;
 
 /**
  * 协议载体
