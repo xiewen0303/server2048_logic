@@ -1,7 +1,0 @@
-############# LOGIN BASE CONFIG ######################## 
-#当前可以开启的服务器ID
-OPEN_REGISTER_SERVER=1
-#单服务器可以在线最高人数
-MAX_ONLINE_COUNT=2000
-#服务器登录端口
-LOGIN_SERVER_PORT=8888

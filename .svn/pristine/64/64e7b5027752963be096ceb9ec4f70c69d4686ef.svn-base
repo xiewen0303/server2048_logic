@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<beans>
-	<bean name="loginserverbase" path="config.protertiesfile.loginserverbase" />
-	<bean name="gameserverbase" path="config.protertiesfile.gameserverbase" />
-	<!-- 
-	<bean name="log" path="config.protertiesfile.log" />
-	 -->	
-</beans>
