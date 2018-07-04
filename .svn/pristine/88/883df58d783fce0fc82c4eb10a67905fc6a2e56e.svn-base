@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" 
+	"http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="ItemInfo">
+	<typeAlias alias="itemInfo" type="db.ibatis.bean.ItemInfo"/> 
+	<resultMap id="result" class="itemInfo">
+		    <result property="uuid" column="uuid"/>
+		    <result property="uid" column="uid"/>
+		    <result property="tplId" column="tpl_id"/>
+		    <result property="count" column="count"/>
+	</resultMap>
+   
+   
+	<insert id="insert" parameterClass="db.ibatis.bean.ItemInfo">
+			insert into item_info
+			( `uuid` , `uid` , `tpl_id` , `count` )
+			values 
+			(  #uuid# , #uid# , #tplId# , #count# )
+			<!--
+			<selectKey resultClass="db.ibatis.bean.ItemInfo">  
+				select * from item_info where id = LAST_INSERT_ID()
+			</selectKey>
+			-->
+	</insert>
+
+	<update id="update" parameterClass="db.ibatis.bean.ItemInfo">
+		UPDATE `item_info` SET 
+		     `uuid` = #uuid# ,
+		     `uid` = #uid# ,
+		     `tpl_id` = #tplId# ,
+		     `count` = #count# 
+		WHERE 1=1  and uuid=#uuid#  ;
+	</update>   
+
+	<delete id="delete">
+		delete from `item_info` where 1=1
+		and uuid=#uuid# 
+	</delete>
+
+	<select id="getByPk" remapResults="true" resultMap="result">
+		select * from `item_info` where 1=1
+		and uuid=#uuid# 
+	</select> 
+    
+    <select id="getListByCondition" remapResults="true"
+		parameterClass="java.util.Map" resultMap="result">
+		select * from `item_info` $condition$
+	</select>
+</sqlMap>

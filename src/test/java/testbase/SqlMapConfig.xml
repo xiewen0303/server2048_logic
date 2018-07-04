@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMapConfig PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
+        "http://www.ibatis.com/dtd/sql-map-config-2.dtd">
+
+<sqlMapConfig>
+
+    <properties resource="config/serverdb.properties" />
+<!-- 使用JDBC的事务管理 -->
+<transactionManager type="JDBC">
+    <!-- 数据源 -->
+    <dataSource type="SIMPLE">
+        <property name="JDBC.Driver" value="com.mysql.jdbc.Driver" />
+        <property name="JDBC.ConnectionURL" value="jdbc:mysql://${DB_IP}:${DB_PORT}/${DB_NAME}?useUnicode=true&amp;characterEncoding=utf8" />
+        <property name="JDBC.Username" value="${USER}" />
+        <property name="JDBC.Password" value="${PASSWORD}" />
+    </dataSource>
+</transactionManager>
+
+<!-- 这里可以写多个实体的映射文件 -->
+<sqlMap resource="db/ibatis/bean/HeroBaseInfo.xml" />
+
+</sqlMapConfig>

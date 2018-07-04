@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates>
+
+    <config name="item.xlsx" comment="道具表">
+        <sheet name="monster" type="com.game.config.tpl.ItemTpl" />
+    </config>
+    
+     <config name="mapbase.xlsx" comment="地图表父">
+        <sheet name="map_base" type="com.game.config.tpl.MapBaseTpl" />
+    </config>
+    
+    
+    <config name="mapchild.xlsx" comment="地图表子">
+        <sheet name="map_child" type="com.game.config.tpl.MapChildTpl" />
+    </config>
+    
+    <config name="creation.xlsx" comment="研发表">
+        <sheet name="skill" type="com.game.config.tpl.CreationTpl" />
+    </config>
+    
+    <config name="compound.xlsx" comment="合成表">
+        <sheet name="skill" type="com.game.config.tpl.CompoundTpl" />
+    </config>
+    
+    
+    
+</templates>

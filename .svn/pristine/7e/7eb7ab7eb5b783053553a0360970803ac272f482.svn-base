@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" 
+	"http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="UuidInfo">
+	<typeAlias alias="uuidInfo" type="db.ibatis.bean.UuidInfo"/> 
+	<resultMap id="result" class="uuidInfo">
+		    <result property="type" column="type"/>
+		    <result property="id" column="id"/>
+		    <result property="name" column="name"/>
+	</resultMap>
+   
+   
+	<insert id="insert" parameterClass="db.ibatis.bean.UuidInfo">
+			insert into uuid_info
+			( `type` , `id` , `name` )
+			values 
+			(  #type# , #id# , #name# )
+			<!--
+			<selectKey resultClass="db.ibatis.bean.UuidInfo">  
+				select * from uuid_info where id = LAST_INSERT_ID()
+			</selectKey>
+			-->
+	</insert>
+
+	<update id="update" parameterClass="db.ibatis.bean.UuidInfo">
+		UPDATE `uuid_info` SET 
+		     `type` = #type# ,
+		     `id` = #id# ,
+		     `name` = #name# 
+		WHERE 1=1  and type=#type#  ;
+	</update>   
+
+	<delete id="delete">
+		delete from `uuid_info` where 1=1
+		and type=#type# 
+	</delete>
+
+	<select id="getByPk" remapResults="true" resultMap="result">
+		select * from `uuid_info` where 1=1
+		and type=#type# 
+	</select> 
+    
+    <select id="getListByCondition" remapResults="true"
+		parameterClass="java.util.Map" resultMap="result">
+		select * from `uuid_info` $condition$
+	</select>
+</sqlMap>

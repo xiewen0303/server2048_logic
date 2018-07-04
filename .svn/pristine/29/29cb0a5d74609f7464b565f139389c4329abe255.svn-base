@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" 
+	"http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="CopyInfo">
+	<typeAlias alias="copyInfo" type="db.ibatis.bean.CopyInfo"/> 
+	<resultMap id="result" class="copyInfo">
+		    <result property="uid" column="uid"/>
+		    <result property="mapTplId" column="map_tpl_id"/>
+		    <result property="state" column="state"/>
+		    <result property="childCopys" column="child_copys"/>
+	</resultMap>
+   
+   
+	<insert id="insert" parameterClass="db.ibatis.bean.CopyInfo">
+			insert into copy_info
+			( `uid` , `map_tpl_id` , `state` , `child_copys` )
+			values 
+			(  #uid# , #mapTplId# , #state# , #childCopys# )
+			<!--
+			<selectKey resultClass="db.ibatis.bean.CopyInfo">  
+				select * from copy_info where id = LAST_INSERT_ID()
+			</selectKey>
+			-->
+	</insert>
+
+	<update id="update" parameterClass="db.ibatis.bean.CopyInfo">
+		UPDATE `copy_info` SET 
+		     `uid` = #uid# ,
+		     `map_tpl_id` = #mapTplId# ,
+		     `state` = #state# ,
+		     `child_copys` = #childCopys# 
+		WHERE 1=1  and map_tpl_id=#mapTplId#   and uid=#uid#  ;
+	</update>   
+
+	<delete id="delete">
+		delete from `copy_info` where 1=1
+		and map_tpl_id=#mapTplId# 
+		and uid=#uid# 
+	</delete>
+
+	<select id="getByPk" remapResults="true" resultMap="result">
+		select * from `copy_info` where 1=1
+		and map_tpl_id=#mapTplId# 
+		and uid=#uid# 
+	</select> 
+    
+    <select id="getListByCondition" remapResults="true"
+		parameterClass="java.util.Map" resultMap="result">
+		select * from `copy_info` $condition$
+	</select>
+</sqlMap>
